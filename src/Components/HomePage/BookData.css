@@ -1,0 +1,131 @@
+
+
+.book-common-style {
+    border-radius: 4px;
+    border: 1px solid #6C6C6C;
+    margin: 20px 0px;
+    /* background: #DBDBDB; */
+ 
+}
+.book-common-style:hover {
+    scale: 1.01 !important;
+    transition: ease-out 0.4s !important; 
+ 
+}
+
+.book-list {
+    border-radius: 8px 8px 0px 0px;
+    background: #C5DFFF;
+
+}
+
+
+
+.details_card{
+        border-radius: 8px 8px 0px 0px;
+}
+
+
+
+.book-details-heading {
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 8px 8px 0px 0px;
+    background: #C5DFFF;
+
+
+}
+
+.details-image {
+    margin: 10px 40%;
+    width: 100px;
+
+}
+
+
+
+
+.common-style {
+    border-radius: 4px;
+    border: 1px solid #6C6C6C;
+    padding-left: 10px;
+    background: #DBDBDB;
+}
+
+
+
+/* spinner */
+.spinner-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* style for mobile */
+@media screen and (max-width : 576px) {
+    .book-container{
+        width: 30%;
+    }
+    .details-card {
+        /* top: 0; */
+        width: 65% !important;
+        margin-top: 28px;
+        margin-right: 10px !important;
+
+
+    }
+
+    .job-title {
+        font-size: 6px;
+    }
+
+    .book-items {
+
+        width: 100% ;
+    }
+
+    .avatar {
+        margin-left: -20px;
+        width: 25px !important;
+        margin-right: 10px;
+
+    }
+
+    .book-name {
+        font-size: 10px !important;
+        margin-left: 0px;
+
+    }
+
+    .list-items {
+        
+        margin-left: 0px ;
+
+    }
+
+    .data-details {
+        width: 100% ;
+    }
+
+    /* for spinner */
+    .spinner-style {
+        width: 100%;
+
+        margin-left: 100%;
+
+    }
+}
+
+/* style for tablet */
+@media only screen and (min-width: 600px) {
+    .list-items {
+        width: 40%;
+    }
+
+    .details-card {
+        width: 55% ;
+
+    }
+}
