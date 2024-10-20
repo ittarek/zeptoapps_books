@@ -1,6 +1,12 @@
 import "react-loading-skeleton/dist/skeleton.css";
 import "./bookData.css";
-import React, { Suspense, useState, startTransition } from "react";
+import React, {
+  Suspense,
+  useState,
+  startTransition,
+  useEffect,
+  useMemo,
+} from "react";
 import Spinner from "../Spinner";
 import Container from "./../Container";
 import bookIcon from "../../assets/bookIcon.svg";
@@ -11,26 +17,27 @@ import rightArrow from "../../assets/right-arrow.svg";
 import leftArrow from "../../assets/left-arrow.svg";
 import loveIcon from "../../assets/love.svg";
 import useAddBooks from "../../hook/useAddBooks";
+import useBookFilters from "../../utilities/FakeDb";
+import { Link } from "react-router-dom";
 
-const BookData = ({ currentPage, totalPages, setCurrentPage }) => {
+const BookData = () => {
   const [showDetails, setShowDetails] = useState({});
   const [wishlist, toggleWishlist] = useAddBooks();
-  const [books, loading, refetch, error] = useBooks();
+  // const [loading] = useBooks();
+
+  const { currentPage, totalPages, loading, handlePageChange,waiting, finalData } =
+    useBookFilters(10);
 
   const handleDetails = data => {
+
     startTransition(() => {
-      setShowDetails(data);
+      setShowDetails(data || {});
     });
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <div className="text-red-500">{error.message}</div>;
-  }
-
+ if (loading || waiting) {
+   return <Spinner />;
+ }
   return (
     <Container>
       <div className="book-container flex justify-between mt-[12%] lg:mt-[7%]">
@@ -39,20 +46,20 @@ const BookData = ({ currentPage, totalPages, setCurrentPage }) => {
           <div className="fixed top-0 lg:top-[85%] left-[35%] mx-auto mt-2 lg:mt-0 lg:mb-11 lg:px-5 lg:py-3 bg-[#C5DFFF] rounded-full w-[35%] flex justify-between items-center font-bold border border-[#000] z-10">
             <button
               className="cursor-pointer py-1 px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
-              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1 || totalPages <= 1}
+              onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+              disabled={currentPage === 1}
               aria-label="Previous Page"
             >
               <img className="w-6 h-6" src={leftArrow} alt="left" />
               Previous
             </button>
-            <span>{currentPage}</span>
+            <span className="text-red-600">{currentPage}</span>
             <button
               className="cursor-pointer py-1 px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
               onClick={() =>
-                setCurrentPage(prev => Math.min(prev + 1, totalPages))
+                handlePageChange(Math.min(currentPage + 1, totalPages))
               }
-              disabled={currentPage === totalPages || totalPages <= 1}
+              disabled={currentPage === totalPages}
               aria-label="Next Page"
             >
               Next
@@ -62,10 +69,10 @@ const BookData = ({ currentPage, totalPages, setCurrentPage }) => {
 
           {/* Books List */}
           <h2 className="lg:w-[500px] book-list text-center">All books</h2>
-          {books.length === 0 ? (
+          {finalData?.length === 0 ? (
             <p className="text-center text-gray-600">No books available.</p>
           ) : (
-            books.map(data => (
+            finalData?.map(data => (
               <div
                 key={data.id}
                 className="book-common-style lg:w-[500px] lg:flex h-[250px] lg:h-[190px] gap-6 mb-11 cursor-pointer lg:p-0 px-1 py-2 hover:bg-[#C5DFFF] transition-all focus:bg-[#C5DFFF] active:bg-[#C5DFFF] overflow-hidden w-full relative"
@@ -156,19 +163,33 @@ const BookData = ({ currentPage, totalPages, setCurrentPage }) => {
             ) : (
               <Skeleton />
             )}
-            <div className="mt-6">
-              {showDetails.authors && showDetails.authors.length > 0 ? (
-                <p>
-                  {showDetails.authors.map(author => author.name).join(", ")}
-                </p>
-              ) : (
-                <Skeleton />
-              )}
+            <div className="flex mt-6 justify-between items-center">
               <div>
+                {showDetails.authors && showDetails.authors.length > 0 ? (
+                  <p>
+                    {showDetails.authors.map(author => author.name).join(", ")}
+                  </p>
+                ) : (
+                  <Skeleton />
+                )}
+
                 {showDetails.title ? (
                   <p className="bio">{showDetails.title}</p>
                 ) : (
                   <Skeleton />
+                )}
+              </div>
+
+              <div>
+                {!showDetails.id ? (
+                  ""
+                ) : (
+                  <Link
+                    className="bg-[#c5dfdf] px-1 py-2 rounded-lg hover:bg-[#f2f2f2] font-semibold"
+                    to={`details/${showDetails.id}`}
+                  >
+                    Show Details
+                  </Link>
                 )}
               </div>
             </div>

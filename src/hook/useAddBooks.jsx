@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useAddBooks = () => {
   const [wishlist, setWishlist] = useState([]);
 
-  // Load wishlist from localStorage when hook initializes
+  //  wishlist from localStorage 
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     setWishlist(storedWishlist);
@@ -16,11 +16,11 @@ const useAddBooks = () => {
 
     let updatedWishlist;
     if (storedWishlist.includes(book.id)) {
-      // Remove the book if it's already in the wishlist
+      //  book if it's already in the wishlist
       updatedWishlist = storedWishlist.filter(id => id !== book.id);
       toast.error("Removed book from wishlist.");
     } else {
-      // Add the book if it's not in the wishlist
+      // Add the book 
       updatedWishlist = [...storedWishlist, book.id];
       toast.success("Added book to wishlist.");
     }

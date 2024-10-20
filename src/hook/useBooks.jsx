@@ -15,6 +15,7 @@ const useBooks = () => {
         throw new Error("Network response was not ok");
       }
       const data = await res.json();
+    
       return data.results || [];
     },
     onError: error => {
@@ -22,7 +23,8 @@ const useBooks = () => {
     },
   });
 
-  return [books, loading, refetch, error]; // এখানে error যুক্ত করা হয়েছে
+  return [books, loading, refetch, error];
 };
+
 
 export default useBooks;

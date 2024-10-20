@@ -7,13 +7,10 @@ import { Toaster } from "react-hot-toast";
 import { Outlet } from "react-router-dom";
 // const Skeleton = React.lazy(() => import("react-loading-skeleton"));
 const App = () => {
-
   return (
     <div className="App">
-      <Navbar
-    
-      />
-     
+      <Navbar />
+
       <Outlet />
       <Toaster
         toastOptions={{
@@ -34,6 +31,5 @@ const App = () => {
     </div>
   );
 };
-
 
 export default App;

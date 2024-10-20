@@ -1,16 +1,15 @@
-
-
 .book-common-style {
     border-radius: 4px;
     border: 1px solid #6C6C6C;
     margin: 20px 0px;
     /* background: #DBDBDB; */
- 
+
 }
+
 .book-common-style:hover {
     scale: 1.01 !important;
-    transition: ease-out 0.4s !important; 
- 
+    transition: ease-out 0.4s !important;
+
 }
 
 .book-list {
@@ -21,8 +20,8 @@
 
 
 
-.details_card{
-        border-radius: 8px 8px 0px 0px;
+.details_card {
+    border-radius: 8px 8px 0px 0px;
 }
 
 
@@ -65,9 +64,10 @@
 
 /* style for mobile */
 @media screen and (max-width : 576px) {
-    .book-container{
+    .book-container {
         width: 30%;
     }
+
     .details-card {
         /* top: 0; */
         width: 65% !important;
@@ -83,7 +83,7 @@
 
     .book-items {
 
-        width: 100% ;
+        width: 100%;
     }
 
     .avatar {
@@ -100,13 +100,13 @@
     }
 
     .list-items {
-        
-        margin-left: 0px ;
+
+        margin-left: 0px;
 
     }
 
     .data-details {
-        width: 100% ;
+        width: 100%;
     }
 
     /* for spinner */
@@ -125,7 +125,7 @@
     }
 
     .details-card {
-        width: 55% ;
+        width: 55%;
 
     }
 }
