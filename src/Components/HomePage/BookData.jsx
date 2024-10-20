@@ -43,9 +43,9 @@ const BookData = () => {
       <div className="book-container flex justify-between mt-[12%] lg:mt-[7%]">
         <div className="list-items lg:w-[50%]">
           {/* Pagination */}
-          <div className="fixed top-0 lg:top-[85%] left-[35%] mx-auto mt-2 lg:mt-0 lg:mb-11 lg:px-5 lg:py-3 bg-[#C5DFFF] rounded-full w-[35%] flex justify-between items-center font-bold border border-[#000] z-10">
+          <div className="fixed top-0 lg:top-[85%] lg:left-[35%] left-[40%] mx-auto mt-2 lg:mt-0 lg:mb-11 lg:px-5 lg:py-3 bg-[#C5DFFF] lg:rounded-full rounded w-[35%] flex justify-between items-center font-bold border border-[#000] z-10">
             <button
-              className="cursor-pointer py-1 px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
+              className="cursor-pointer py-1 lg:px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
               onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
               disabled={currentPage === 1}
               aria-label="Previous Page"
@@ -55,7 +55,7 @@ const BookData = () => {
             </button>
             <span className="text-red-600">{currentPage}</span>
             <button
-              className="cursor-pointer py-1 px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
+              className="cursor-pointer py-1 lg:px-2 rounded-full active:bg-slate-200 flex items-center hover:text-green-700"
               onClick={() =>
                 handlePageChange(Math.min(currentPage + 1, totalPages))
               }

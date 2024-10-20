@@ -7,7 +7,7 @@ const WhiteList = () => {
   const [books, loading] = useBooks();
   const [wishlist, setWishlist] = useState([]);
 
-  // Load wishlist from localStorage when app loads
+
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     setWishlist(storedWishlist);
@@ -17,7 +17,7 @@ const WhiteList = () => {
     return <Spinner />;
   }
 
-  // Filter books that are in the wishlist
+  // Filter books 
   const wishlistedBooks = books.filter(book => wishlist.includes(book.id));
 
   const removeFromWishlist = bookId => {
@@ -27,7 +27,7 @@ const WhiteList = () => {
   };
   return (
     <div className="flex items-center justify-center w-full my-24">
-      <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-24">
         {wishlistedBooks.map(data => (
           <div
             key={data.id}

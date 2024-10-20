@@ -17,8 +17,8 @@ const BookList = () => {
 
 
   return (
-    <div className="flex items-center justify-center w-full my-24">
-      <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
+    <div className="flex items-center justify-center w-full my-24 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-24">
         {books.map(data => (
           <div
             key={data.id}

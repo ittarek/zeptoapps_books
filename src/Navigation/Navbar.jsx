@@ -18,13 +18,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="py-2 px-3 w-full bg-white shadow fixed top-0">
+    <nav className="py-2 lg:px-3 px-1 w-full bg-white shadow fixed top-0">
       {" "}
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3">
           <img className="h-8 rounded" src={logo} alt="Logo Image" />
-          <p>Zepto Apps</p>
+          <p className="font-bold">Zepto Apps</p>
         </div>
 
         {/* Hamburger Menu */}
@@ -44,7 +44,7 @@ const Navbar = () => {
         >
           {/* Search Bar */}
           <input
-            className="rounded p-1"
+            className="rounded p-1 border border:bg-[#C5DFFF]"
             type="text"
             placeholder="Search by title..."
             value={search}
@@ -53,7 +53,7 @@ const Navbar = () => {
 
           {/* Dropdown for filter */}
           <select
-            className="w-[130px] rounded p-1 text-black"
+            className="w-[130px] rounded p-1 text-black border border-bg-[#C5DFFF]"
             onChange={handleGenreChange}
             value={filterData}
           >
